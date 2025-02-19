@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html lang="en" xml:lang="en" class="mobile-top"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Přihlášení - Alza Identity Server</title>
+
+    <link href="./index_files/css2" rel="stylesheet">
+    <link href="./index_files/styles.min.css" rel="stylesheet">
+
+    <script type="text/javascript">
+        var appSettings = {
+            logApiEndpoint: 'https://logapi.alza.cz/api/log/v2/logs'
+        };
+    </script>
+
+</head>
+<body class="bg-blue">
+    <div class="container-fluid px-0 layout h-100">
+
+        <div class="d-flex flex-column justify-content-center align-items-center h-100">
+                <div class="mb-4 mt-4 mt-md-4">
+                    <img width="172" alt="Alza logo" src="./index_files/alza_cz.svg">
+                </div>
+
+            
+
+
+
+<div class="d-flex justify-content-center align-items-center login-container">
+	<form method="post" class="login-wrapper d-flex flex-column justify-content-between bordered needs-validation" novalidate="" action="https://identity.alza.cz/account/login?returnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Facr_values%3Dcountry%253ACZ%2520regLink%253AProduction_registration%2520source%253AWeb%26client_id%3Dalza%26culture%3Dcs-CZ%26nonce%3Drandom_nonce%26redirect_uri%3Dhttps%253A%252F%252Fwww.alza.cz%252Fexternal%252Fcallback%253Fnav%253DLw%26response_mode%3Dform_post%26response_type%3Dcode%2520id_token%26scope%3Demail%2520openid%2520profile%2520alza%2520offline_access%26state%3Dd1f8c796-2760-4478-86d9-5d7ffccae012">
+		<input id="ReturnUrl" name="ReturnUrl" type="hidden" value="/connect/authorize/callback?acr_values=country%3ACZ%20regLink%3AProduction_registration%20source%3AWeb&amp;client_id=alza&amp;culture=cs-CZ&amp;nonce=random_nonce&amp;redirect_uri=https%3A%2F%2Fwww.alza.cz%2Fexternal%2Fcallback%3Fnav%3DLw&amp;response_mode=form_post&amp;response_type=code%20id_token&amp;scope=email%20openid%20profile%20alza%20offline_access&amp;state=d1f8c796-2760-4478-86d9-5d7ffccae012">
+		<input id="CountryCode" name="CountryCode" type="hidden" value="CZ">
+		<div class="login-body">
+			<div class="login-title">
+				<h1>Přihlášení</h1>
+					<span>Použijte stejné přihlašovací údaje jako do účtu Moje Alza.</span>
+			</div>
+
+			<div class="form-group">
+				<label class="font-sm" for="userName">E-mail</label>
+				<input type="text" class="form-control" id="userName" autofocus="" tabindex="1" autocapitalize="off" autocorrect="off" autocomplete="username" required="" name="Username" value="">
+				<span class="validation-message d-none">Zadejte e-mailovou adresu</span>
+			</div>
+
+			<div class="form-group">
+				<label class="font-sm" for="password">Heslo</label>
+				<a class="float-right font-sm text-gray" tabindex="-1" id="forgotPasswordLink" href="https://identity.alza.cz/Account/forgotpassword?returnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Facr_values%3Dcountry%253ACZ%2520regLink%253AProduction_registration%2520source%253AWeb%26client_id%3Dalza%26culture%3Dcs-CZ%26nonce%3Drandom_nonce%26redirect_uri%3Dhttps%253A%252F%252Fwww.alza.cz%252Fexternal%252Fcallback%253Fnav%253DLw%26response_mode%3Dform_post%26response_type%3Dcode%2520id_token%26scope%3Demail%2520openid%2520profile%2520alza%2520offline_access%26state%3Dd1f8c796-2760-4478-86d9-5d7ffccae012&amp;countryCode=CZ">Zapomenuté heslo?</a>
+				<input type="password" class="form-control" id="password" tabindex="2" value="" autocomplete="current-password" required="" name="Password">
+				<span class="validation-message d-none">Zadejte prosím heslo</span>
+			</div>
+
+				<button id="btnLogin" type="submit" class="btn btn-login mt-2" tabindex="2">
+					<span class="spinner circle-loader-container"><svg class="circle-loader" width="20" height="20" version="1.1" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="9"></circle></svg></span>
+					<span id="loginButtonText">Přihlásit se</span>
+				</button>
+		</div>
+
+		<div class="login-footer d-flex flex-column align-items-center text-center">
+				<div class="font-sm align-self-start text-gray">
+					Přihlásit přes
+				</div>
+				<div class="d-flex flex-wrap justify-content-center w-100 login-social-buttons">
+						<a class="btn btn-social google ml-0 mr-0" title="Google" target="_parent" data-tid="login-by-Google" href="https://identity.alza.cz/external/challenge?provider=Google&amp;returnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Facr_values%3Dcountry%253ACZ%2520regLink%253AProduction_registration%2520source%253AWeb%26client_id%3Dalza%26culture%3Dcs-CZ%26nonce%3Drandom_nonce%26redirect_uri%3Dhttps%253A%252F%252Fwww.alza.cz%252Fexternal%252Fcallback%253Fnav%253DLw%26response_mode%3Dform_post%26response_type%3Dcode%2520id_token%26scope%3Demail%2520openid%2520profile%2520alza%2520offline_access%26state%3Dd1f8c796-2760-4478-86d9-5d7ffccae012&amp;countryCode=CZ">
+						</a>
+						<a class="btn btn-social apple ml-0 mr-0" title="Apple" target="_parent" data-tid="login-by-Apple" href="https://identity.alza.cz/external/challenge?provider=Apple&amp;returnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Facr_values%3Dcountry%253ACZ%2520regLink%253AProduction_registration%2520source%253AWeb%26client_id%3Dalza%26culture%3Dcs-CZ%26nonce%3Drandom_nonce%26redirect_uri%3Dhttps%253A%252F%252Fwww.alza.cz%252Fexternal%252Fcallback%253Fnav%253DLw%26response_mode%3Dform_post%26response_type%3Dcode%2520id_token%26scope%3Demail%2520openid%2520profile%2520alza%2520offline_access%26state%3Dd1f8c796-2760-4478-86d9-5d7ffccae012&amp;countryCode=CZ">
+						</a>
+						<a class="btn btn-social seznam ml-0 mr-0" title="Seznam" target="_parent" data-tid="login-by-Seznam" href="https://identity.alza.cz/external/challenge?provider=Seznam&amp;returnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Facr_values%3Dcountry%253ACZ%2520regLink%253AProduction_registration%2520source%253AWeb%26client_id%3Dalza%26culture%3Dcs-CZ%26nonce%3Drandom_nonce%26redirect_uri%3Dhttps%253A%252F%252Fwww.alza.cz%252Fexternal%252Fcallback%253Fnav%253DLw%26response_mode%3Dform_post%26response_type%3Dcode%2520id_token%26scope%3Demail%2520openid%2520profile%2520alza%2520offline_access%26state%3Dd1f8c796-2760-4478-86d9-5d7ffccae012&amp;countryCode=CZ">
+						</a>
+						<a class="btn btn-social mojeid ml-0 mr-0" title="MojeId" target="_parent" data-tid="login-by-MojeId" href="https://identity.alza.cz/external/challenge?provider=MojeId&amp;returnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Facr_values%3Dcountry%253ACZ%2520regLink%253AProduction_registration%2520source%253AWeb%26client_id%3Dalza%26culture%3Dcs-CZ%26nonce%3Drandom_nonce%26redirect_uri%3Dhttps%253A%252F%252Fwww.alza.cz%252Fexternal%252Fcallback%253Fnav%253DLw%26response_mode%3Dform_post%26response_type%3Dcode%2520id_token%26scope%3Demail%2520openid%2520profile%2520alza%2520offline_access%26state%3Dd1f8c796-2760-4478-86d9-5d7ffccae012&amp;countryCode=CZ">
+						</a>
+				</div>
+			
+
+<div class="d-flex justify-content-between align-items-center w-100 login-footer-logo">
+		<a id="registerLink" class="registration-link" target="_parent" href="https://www.alza.cz/Registration.htm">Nová registrace</a>
+</div>
+
+
+		</div>
+	<input name="__RequestVerificationToken" type="hidden" value="CfDJ8POgKJFH7gVGnj-HLfgcWqZmY00L_e_-1bMhtXVsK-OxC6drhreok_eGRxpCMd2jY79uosp70Ngr-GyehP1vzY71PQ0sT_rbLFJGVCEHLDuaj1HDh2Lsb0DRFEPoUzRK29a98blouBzAtmiN54OQrik"></form>
+</div>
+
+                <div class="copyright-text mt-4">© 1994 - 2025 Alza.cz a.s.</div>
+
+        </div>
+    </div>
+    
+        <script type="text/javascript" src="./index_files/pollyfills.js.download"></script>
+    
+    
+    
+	
+		<script type="text/javascript" src="./index_files/login-page.js.download"></script>
+	
+	
+
+    <script type="text/javascript">
+		var loginI18n = {
+			loggingIn: "Přihlašujeme vás",
+			invalidUsernameOrPassword: "Neplatné uživatelské jméno nebo heslo",
+			loginBtn: "Přihlásit se",
+            redirectFailed: "Při přihlášení došlo k chybě."
+		};
+	</script>
+
+
+
+</body></html>

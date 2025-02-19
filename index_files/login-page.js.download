@@ -1,0 +1,161 @@
+document.addEventListener("DOMContentLoaded", function () {
+    new LoginPage().init();
+});
+var LoginPage = /** @class */ (function () {
+    function LoginPage() {
+        this.formSubmitted = false;
+    }
+    LoginPage.prototype.updateQueryStringParameter = function (uri, key, value) {
+        value = encodeURIComponent(value);
+        var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+        var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+        if (uri.match(re)) {
+            return uri.replace(re, '$1' + key + "=" + value + '$2');
+        }
+        else {
+            return uri + separator + key + "=" + value;
+        }
+    };
+    LoginPage.prototype.onSubmit = function (event) {
+        var _this = this;
+        var _a;
+        var target = event.target;
+        this.formSubmitted = true;
+        if (this.loginBtn.classList.contains('invalid')) {
+            this.resetLoginButton();
+        }
+        if (this.loginForm.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        else {
+            this.username.readOnly = true;
+            this.password.readOnly = true;
+            this.loginBtn.disabled = true;
+            Array.from(document.getElementsByClassName('btn')).forEach(function (socialButton) {
+                socialButton.classList.add('disabled');
+            });
+            (_a = document.getElementById('registerLink')) === null || _a === void 0 ? void 0 : _a.classList.add('disabled');
+            document.getElementById('forgotPasswordLink').classList.add('disabled');
+            target.classList.add('disabled');
+            document.getElementById('loginButtonText').innerText = loginI18n.loggingIn;
+            setTimeout(function () {
+                var userName = _this.username.value;
+                _this.loginBtn.classList.add('invalid');
+                document.getElementById('loginButtonText').innerText = loginI18n.redirectFailed;
+                var errorLog = {
+                    logRequestBodyModel: {
+                        severity: 4,
+                        clientMessage: "Failed to redirect user {UserName} after login. Query string is {QueryString}",
+                        platform: 0,
+                        application: 10,
+                        logKeys: {
+                            UserName: userName,
+                            QueryString: window.location.search,
+                            UserAgent: navigator.userAgent
+                        }
+                    }
+                };
+                fetch(appSettings.logApiEndpoint, {
+                    method: 'POST', body: JSON.stringify(errorLog), headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+            }, 20000);
+        }
+        this.validate();
+    };
+    LoginPage.prototype.init = function () {
+        var _this = this;
+        this.username = document.getElementById('userName');
+        this.password = document.getElementById('password');
+        if (!this.username.value) {
+            this.username.value = this.getUsername();
+            this.username.focus();
+        }
+        else {
+            this.password.focus();
+        }
+        this.forgotPasswordLink = document.getElementById('forgotPasswordLink');
+        this.msgRequired = document.getElementById('msgRequired');
+        this.loginForm = document.querySelector('form');
+        this.loginBtn = document.getElementById('btnLogin');
+        this.loginForm.addEventListener('submit', this.onSubmit.bind(this));
+        this.username.addEventListener('keyup', function (event) {
+            var target = event.target;
+            var value = (target.value || '').trim();
+            _this.setUsername(value);
+        });
+        this.username.addEventListener('input', function () {
+            _this.resetLoginButton();
+            _this.validate();
+        });
+        this.password.addEventListener('input', function () {
+            _this.resetLoginButton();
+            _this.validate();
+        });
+        this.password.addEventListener('focus', function () {
+            if (_this.password.value) {
+                _this.password.select();
+            }
+        });
+        setTimeout(function () {
+            _this.resetLoginButton();
+        }, 3000);
+    };
+    LoginPage.prototype.validate = function () {
+        if (this.formSubmitted && !this.username.value) {
+            this.showValidationMessages(this.username);
+        }
+        else {
+            this.hideValidationMessages(this.username);
+        }
+        if (this.formSubmitted && !this.password.value) {
+            this.showValidationMessages(this.password);
+        }
+        else {
+            this.hideValidationMessages(this.password);
+        }
+    };
+    LoginPage.prototype.resetLoginButton = function () {
+        if (this.loginBtn.classList.contains('invalid')) {
+            this.loginBtn.classList.remove('invalid');
+            document.getElementById('loginButtonText').innerText = loginI18n.loginBtn;
+        }
+    };
+    LoginPage.prototype.showValidationMessages = function (input) {
+        if (!input.parentElement.classList.contains('is-invalid')) {
+            input.parentElement.classList.add('is-invalid');
+            input.parentElement.querySelector('.validation-message').classList.remove('d-none');
+        }
+    };
+    LoginPage.prototype.hideValidationMessages = function (input) {
+        if (input.parentElement.classList.contains('is-invalid')) {
+            input.parentElement.classList.remove('is-invalid');
+            input.parentElement.querySelectorAll('.validation-message')
+                .forEach(function (e) { return e.classList.add('d-none'); });
+        }
+    };
+    LoginPage.prototype.getUsername = function () {
+        try {
+            if (sessionStorage && sessionStorage.getItem('userName')) {
+                return sessionStorage.getItem('userName') || '';
+            }
+            return '';
+        }
+        catch (_a) {
+            return '';
+        }
+    };
+    LoginPage.prototype.setUsername = function (value) {
+        try {
+            if (sessionStorage) {
+                sessionStorage.setItem('userName', value);
+            }
+        }
+        catch (_a) { }
+    };
+    return LoginPage;
+}());
+
+//# sourceMappingURL=login-page.js.map
